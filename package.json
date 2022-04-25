@@ -3,10 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "run-p dev:*",
+    "dev:next": "next dev",
+    "dev:path": "pathpida --enableStatic --ignorePath .gitignore --output src/lib --watch",
+    "build": "pathpida --enableStatic --ignorePath .gitignore --output src/lib && next build",
     "start": "next start",
-    "lint": "next lint"
+    "serve": "run-s build start",
+    "lint": "next lint",
+    "prettier": "prettier --check .",
+    "unit": "jest",
+    "e2e": "playwright test",
+    "test": "run-p -l -c --aggregate-output lint prettier unit",
+    "fix": "run-s -l -c fix:lint fix:prettier",
+    "fix:lint": "next lint --fix",
+    "fix:prettier": "prettier --write .",
+    "env": "vc env pull .env.local",
+    "prepare": "husky install"
   },
   "postcss": {
     "plugins": {
