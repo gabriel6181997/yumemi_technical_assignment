@@ -16,13 +16,17 @@ export const useGraphLabels = () => {
 
       const populationDataJson: PopulationDataJson =
         await populationDataFromAPI.json();
-      const populationYear = populationDataJson.result.data
-        .find((pop) => {
-          return pop.label === "総人口";
-        })
-        .data.map((d) => {
-          return d.year;
-        });
+      const wholePopulation = populationDataJson.result.data.find((pop) => {
+        return pop.label === "総人口";
+      });
+
+      if (!wholePopulation) {
+        return;
+      }
+
+      const populationYear = wholePopulation.data.map((d) => {
+        return d.year;
+      });
       setGraphLabels(populationYear);
     } catch (error: unknown) {
       if (error instanceof Error) {
