@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 主な使用技術/ライブラリー
 
-## Getting Started
+- Next.js
+- TypeScript
+- SCSS
+- ESLint
+- Prettier
+- chart.js
+- react-chartjs-2
 
-First, run the development server:
+## 工夫したところ
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### 1. 人口構成 API との連携
+  人口構成 API は設計上、クエリで一気に複数の町の人口データを取得することはできないため、複数の町の人口データの取得に苦労しました。試行錯誤を重ねた結果、map でチェック付きの町の番号を回し、町ごとに人口データを取得し、その後 Promise.all()でデータを組み合わせることにしました。
+### 2. カスタムフックの活用
+  index.page のコード量を減らし、ビューとロジックをしっかりと切り分けるために、カスタムフックで API を叩く関数と関連のフックやステートを切り出しました。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 今後の課題
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 1. リアルタイムでデータを取得できるようにすること
+  現在高速に多くのチェックを入れたり、外したりすると、処理が追いつかず、タイムラグが発生することがあります。そのため、今後 SWR を導入し、キャッシュを効かせることでタイムラグを減らすつもりです。
+### 2. テストコードの導入
+  時間不足のため、今回テストコードを書かず、手動でテストを行いました。テストの効率化を向上させるため、今後 Jest と react-testing-library でテストコードを書き、テストを自動化するつもりです。
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 課題の取り組み開始から完了までに要した時間
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+30 時間ほど
 
-## Learn More
+## これまでの総合的なプログラミング歴＋これまでの Web フロントエンドプログラミング歴
 
-To learn more about Next.js, take a look at the following resources:
+合計 2 年間ほど  
+2020/05 プログラミング（Web 制作）の勉強を開始       
+2020/09 ~ 2020/12 Web 制作の仕事（業務委託）  
+2020/12 Web フロントエンドの勉強を開始  
+2021/08 ~ 2022/03 Web アプリのフロントエンド開発の長期インターン  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- これまでコードレビューをもらったことはあまりないため、フロントエンド歴 1 年ぐらいあるとはいえ、コードにまだ荒いところがあります。今後の改善のために、もしよろしければ、コードレビューをいただけますと大変嬉しく思います。
+- 私の経歴は自己紹介サイトの About ページにまとめているため、もしご興味がございましたら、[こちら](https://gabutech.vercel.app/about)をご確認ください。
