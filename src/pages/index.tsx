@@ -23,7 +23,8 @@ const Home: NextPage = () => {
     const list = prefectureCheckedList.map((prefecture) => {
       return fetchPopulationData(prefecture);
     });
-    setGraphDataList(await Promise.all(list));
+    const dataList = await Promise.all(list);
+    setGraphDataList(dataList as GraphData[]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [prefectureCheckedList]);
