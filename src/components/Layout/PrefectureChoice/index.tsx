@@ -10,8 +10,7 @@ type PrefectureChoiceType = {
 };
 
 export const PrefectureChoice: VFC<PrefectureChoiceType> = (props) => {
-  const { prefectureData, setPrefectureCheckedList } =
-    props;
+  const { prefectureData, setPrefectureCheckedList } = props;
 
   const handleChange = useCallback(
     (e: { prefCode: number; isChecked: boolean }) => {
