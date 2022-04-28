@@ -5,7 +5,7 @@ export type PrefectureData = {
 
 export type GraphData = {
   label: string;
-  data: number;
+  data: number[];
   fill: boolean;
   borderColor: string;
 };
