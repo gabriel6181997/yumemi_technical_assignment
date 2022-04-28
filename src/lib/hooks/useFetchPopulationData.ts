@@ -16,13 +16,17 @@ export const useFetchPopulationData = () => {
         return pre.prefCode === prefecture;
       })?.prefName || "";
 
-    const populationValue = populationDataJson.result.data
-      .find((pop) => {
-        return pop.label === "総人口";
-      })
-      .data.map((d) => {
-        return d.value;
-      });
+    const wholePopulation = populationDataJson.result.data.find((pop) => {
+      return pop.label === "総人口";
+    });
+
+    if (!wholePopulation) {
+      return;
+    }
+
+    const populationValue = wholePopulation.data.map((d) => {
+      return d.value;
+    });
 
     const datasetItem = {
       label: prefectureName,
