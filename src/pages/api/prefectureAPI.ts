@@ -15,7 +15,6 @@ const prefectureAPI = async (
     {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       headers: { "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY },
-      // headers: { "X-API-KEY": "mqlWivzg7zOd9P2WnerDGpnk16rSBVsJ5p7IaZqQ" }
     }
   );
   const response = await data.json();
