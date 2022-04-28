@@ -88,3 +88,12 @@ export const graphColor = [
   "rgb(159 18 57)", // text-rose-800
   "rgb(136 19 55)", // text-rose-900
 ];
+
+export const defaultGraphSets = [
+  {
+    label: "サンプル",
+    data: [],
+    fill: "",
+    borderColor: ""
+  }
+]
