@@ -9,3 +9,17 @@ export type GraphData = {
   fill: boolean;
   borderColor: string;
 };
+
+export type PopulationDataJson = {
+  message: null;
+  result: {
+    boundaryYear: number;
+    data: {
+      label: string;
+      data: {
+        year: number;
+        value: number;
+      }[];
+    }[];
+  };
+};
