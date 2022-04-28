@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { PrefectureData } from "src/lib/type/type";
 
 export const usePrefectureData = () => {
@@ -21,6 +21,10 @@ export const usePrefectureData = () => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    getPrefectureData();
+  }, [getPrefectureData]);
 
   return { prefectureData, prefectureDataError, getPrefectureData };
 };
