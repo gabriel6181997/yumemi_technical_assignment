@@ -1,21 +1,22 @@
+import type { VFC } from "react";
 import { Line } from "react-chartjs-2";
 import styles from "src/components/Layout/Graph/index.module.scss";
+import type { GraphData } from "src/lib/type/type";
+import { defaultGraphSets } from "src/lib/utils/utils";
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [65, 59, 80, 81, 56, 55, 40],
-      fill: false,
-      borderColor: "rgb(75, 192, 192)",
-    },
-  ],
+type GraphType = {
+  datasets: GraphData[];
+  labels: number[];
 };
 
-export const Graph = () => {
+export const Graph: VFC<GraphType> = (props) => {
+  const { datasets, labels } = props;
+
+  const data = {
+    labels: labels,
+    datasets: datasets.length === 0 ? defaultGraphSets : datasets,
+  };
+
   return (
     <div className={styles.graphContainer}>
       <Line data={data} />
