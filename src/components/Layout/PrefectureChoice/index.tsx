@@ -30,8 +30,8 @@ export const PrefectureChoice: VFC<PrefectureChoiceType> = (props) => {
   );
 
   return (
-    <div className="container">
-      <h2>都道府県</h2>
+    <div>
+      <h2 className={styles.title}>都道府県</h2>
       <ul className={styles.checkboxGroup}>
         {prefectureData &&
           prefectureData.map((prefecture) => {
